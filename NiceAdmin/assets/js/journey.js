@@ -92,14 +92,25 @@ $('#example').on('click', '.show-button', function () {
 
 $('#example').on('click', '.add-button', function () {
     addFunction();
+    $('#addstopPoint').modal('show');
 
 });
 
-
 function editFunction(data) {
+    var sourcePointDropdown = $("#sourcePoint");
+    var destinationPointDropdown = $("#destinationPoint");
+    $.ajax({
+        url: "http://localhost:8080/Organizer/ViewAllPoint",
+        method: "GET",
+        success: function (points) {
+            console.log(points);
+            $('#editJourneyModal').modal('show');
+        },
+        error: function (error) {
+            alert(error.responseText);
+        }
+    });
     
-    $('#editJourneyModal').modal('show');
-
 }
 
 function deleteFunction(data) {
@@ -131,3 +142,27 @@ function addFunction() {
     console.log("Add button clicked");
 }
     });
+    function showAddFeild(){
+        $(document).ready(function(){
+            var xhr = new XMLHttpRequest() ;
+            const driver = document.getElementById("driverSelect") ; 
+            xhr.open("Get" , "https://global-memento-407716.uc.r.appspot.com/Admin/GetUser?role=2" , true) ;
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200) { 
+                    driverData = JSON.parse(xhr.responseText);
+                    for(var i = 0 ;i < driverData.length ; i++){
+                        var option = document.createElement("option");
+                        option.value = driverData[i].userID ;
+                        option.text = driverData[i].name;
+                        driver.appendChild(option);
+                    }
+                }
+            }
+            xhr.send();
+        });
+        $('#addJourney').modal('show');
+    }
+
+    function editJourney() {
+
+    }
