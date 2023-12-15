@@ -193,15 +193,52 @@
                     data-bs-dismiss="modal">Cancel</button>
                 </div>  
               </form>
+
+
+              
             </div>
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="addstopPoint" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="userModalLabel">Add stop point</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="addUserForm">
+                <input type="text" id="idBus" hidden>
+                <div class="mb-3">
+                  <label for="sourcePoint" class="form-label">Stop point name </label>
+                  <select id="sourcePoint" class="form-select">
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <button type="submit" id="editbtn" onclick="editBus()" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" onclick="deleteField()"
+                    data-bs-dismiss="modal">Cancel</button>
+                </div>  
+              </form>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
       <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+              <h5 class="modal-title" id="editUserModalLabel">Edit Journey</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -217,11 +254,7 @@
                   <select id="isWorking" class="form-select">
                   </select>
                 </div>
-                <div class="mb-3">
-                  <label for="editEmail" class="form-label">destination point</label>
-                  <select id="isWorking" class="form-select">
-                  </select>
-                </div>
+          
                 <div class="mb-3">
                   <label for="userName" class="form-label">Journey Name</label>
                   <input type="text" class="form-control" id="addPointName" required>
