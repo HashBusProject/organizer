@@ -143,22 +143,5 @@ function addFunction() {
 }
     });
     function showAddFeild(){
-        $(document).ready(function(){
-            var xhr = new XMLHttpRequest() ;
-            const driver = document.getElementById("driverSelect") ; 
-            xhr.open("Get" , "https://global-memento-407716.uc.r.appspot.com/Admin/GetUser?role=2" , true) ;
-            xhr.onreadystatechange = function(){
-                if(xhr.readyState == 4 && xhr.status == 200) { 
-                    driverData = JSON.parse(xhr.responseText);
-                    for(var i = 0 ;i < driverData.length ; i++){
-                        var option = document.createElement("option");
-                        option.value = driverData[i].userID ;
-                        option.text = driverData[i].name;
-                        driver.appendChild(option);
-                    }
-                }
-            }
-            xhr.send();
-        });
         $('#addJourney').modal('show');
     }
