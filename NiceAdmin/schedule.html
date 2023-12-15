@@ -125,7 +125,7 @@
 
                     </div>
                     <div class="ps-3">
-                      <h6 id="numberOfJourneys"></h6>
+                      <h6 id="numberOfTrip"></h6>
                     </div>
                   </div>
                 </div>
@@ -137,7 +137,7 @@
         <button type="button" onclick="showAddFeild()" class="btn btn-danger rounded-pill col-lg-7 mx-auto"
           style="margin: 10px;">Add Trip in the Schedule</button>
       </div>
-      <div class="modal fade" id="addJourney" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+      <div class="modal fade" id="addTrip" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -148,13 +148,13 @@
               <form id="addUserForm">
                 <input type="text" id="idBus" hidden>
                 <div class="mb-3">
-                  <label for="sourcePoint" class="form-label">Journey Name</label>
-                  <select id="sourcePoint" class="form-select">
+                  <label for="journeyName" class="form-label">Journey Name</label>
+                  <select id="journeyName" class="form-select">
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label for="editEmail" class="form-label">Bus ID</label>
-                  <select id="isWorking" class="form-select">
+                  <label for="busID" class="form-label">Bus ID</label>
+                  <select id="busID" class="form-select">
                   </select>
                 </div>
                 <div class="cs-form">
@@ -162,7 +162,7 @@
                   </div>
                 
                 <div class="mb-3">
-                  <button type="submit" id="editbtn" onclick="editBus()" class="btn btn-primary">Save changes</button>
+                  <button type="submit" id="editTrip" onclick="editBus()" class="btn btn-primary">Save changes</button>
                   <button type="button" class="btn btn-secondary" onclick="deleteField()"
                     data-bs-dismiss="modal">Cancel</button>
                 </div>
@@ -174,25 +174,25 @@
           </div>
         </div>
       </div>      
-        <div class="modal fade" id="editJourneyModal" tabindex="-1" aria-labelledby="editUserModalLabel"
+        <div class="modal fade" id="editTrip" tabindex="-1" aria-labelledby="editUserModalLabel"
           aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="editUserModalLabel">Edit Schedules</h5>
+                <h5 class="modal-title" id="editTrip">Edit Schedules</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form id="editUserForm">
-                  <input type="text" id="idJourney" hidden>
+                <form id="editTrip">
+                  <input type="text" id="idTrip" hidden>
                   <div class="mb-3">
-                    <label for="sourcePoint" class="form-label">Journey Name</label>
-                    <select id="sourcePoint" class="form-select">
+                    <label for="journeyName" class="form-label">Journey Name</label>
+                    <select id="journeyName" class="form-select">
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label for="destinationPoint" class="form-label">Bus ID</label>
-                    <select id="destinationPoint" class="form-select">
+                    <label for="busId" class="form-label">Bus ID</label>
+                    <select id="busId" class="form-select">
                     </select>
                   </div>
                   <div class="cs-form">
