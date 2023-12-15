@@ -145,3 +145,4 @@ function addFunction() {
     function showAddFeild(){
         $('#addJourney').modal('show');
     }
+    
