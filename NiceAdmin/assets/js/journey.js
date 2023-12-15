@@ -162,7 +162,3 @@ function addFunction() {
         });
         $('#addJourney').modal('show');
     }
-
-    function editJourney() {
-
-    }
