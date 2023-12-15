@@ -41,6 +41,7 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
   </header>
+
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -105,7 +106,7 @@
   </aside>
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Journey </h1>
+      <h1>Schedules </h1>
 
     </div><!-- End Page Title -->
     <section class="section dashboard">
@@ -117,10 +118,11 @@
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
                 <div class="card-body">
-                  <h5 class="card-title">Number of Journey </h5>
+                  <h5 class="card-title">Number of Trip </h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fas fa-route"></i>
+                        <i class="fas fa-clock"></i>
+
                     </div>
                     <div class="ps-3">
                       <h6 id="numberOfJourneys"></h6>
@@ -133,36 +135,32 @@
           </div>
         </div>
         <button type="button" onclick="showAddFeild()" class="btn btn-danger rounded-pill col-lg-7 mx-auto"
-          style="margin: 10px;">Add Journey</button>
+          style="margin: 10px;">Add Trip in the Schedule</button>
       </div>
       <div class="modal fade" id="addJourney" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="userModalLabel">Add Journey</h5>
+              <h5 class="modal-title" id="userModalLabel">Add Schedules</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form id="addUserForm">
                 <input type="text" id="idBus" hidden>
                 <div class="mb-3">
-                  <label for="sourcePoint" class="form-label">source point</label>
+                  <label for="sourcePoint" class="form-label">Journey Name</label>
                   <select id="sourcePoint" class="form-select">
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label for="editEmail" class="form-label">destination point</label>
+                  <label for="editEmail" class="form-label">Bus ID</label>
                   <select id="isWorking" class="form-select">
                   </select>
                 </div>
-                <div class="mb-3">
-                  <label for="userName" class="form-label">Journey Name</label>
-                  <input type="text" class="form-control" id="addPointName" required>
-                </div>
-                <div class="mb-3">
-                  <label for="ticketPrice" class="form-label">Ticket price</label>
-                  <input type="text" class="form-control" id="addPointName" required>
-                </div>
+                <div class="cs-form">
+                    <input type="time" class="form-control" value="10:05 AM" />
+                  </div>
+                
                 <div class="mb-3">
                   <button type="submit" id="editbtn" onclick="editBus()" class="btn btn-primary">Save changes</button>
                   <button type="button" class="btn btn-secondary" onclick="deleteField()"
@@ -175,82 +173,32 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="modal fade" id="addstopPoint" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="userModalLabel">Add stop point</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="addUserForm">
-                <input type="text" id="idBus" hidden>
-                <div class="mb-3">
-                  <label for="sourcePoint" class="form-label">Stop point name </label>
-                  <select id="sourcePoint" class="form-select">
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <button type="submit" id="editbtn" onclick="editBus()" class="btn btn-primary">Save changes</button>
-                  <button type="button" class="btn btn-secondary" onclick="deleteField()"
-                    data-bs-dismiss="modal">Cancel</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" id="showStopPoint" tabindex="-1" aria-labelledby="editUserModalLabel"
-        aria-hidden="true">
-        <div class="modal fade" id="addstopPoint" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="addstopPoint">Show stop point</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form id="addUserForm">
-                  <input type="text" id="idBus" hidden>
-                  <div id="cardContainer"></div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+      </div>      
         <div class="modal fade" id="editJourneyModal" tabindex="-1" aria-labelledby="editUserModalLabel"
           aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="editUserModalLabel">Edit Journey</h5>
+                <h5 class="modal-title" id="editUserModalLabel">Edit Schedules</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <form id="editUserForm">
                   <input type="text" id="idJourney" hidden>
                   <div class="mb-3">
-                    <label for="sourcePoint" class="form-label">source point</label>
+                    <label for="sourcePoint" class="form-label">Journey Name</label>
                     <select id="sourcePoint" class="form-select">
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label for="destinationPoint" class="form-label">destination point</label>
+                    <label for="destinationPoint" class="form-label">Bus ID</label>
                     <select id="destinationPoint" class="form-select">
                     </select>
                   </div>
-                  <div class="mb-3">
-                    <label for="userName" class="form-label">Journey Name</label>
-                    <input type="text" class="form-control" id="journeyName" required>
+                  <div class="cs-form">
+                    <input type="time" class="form-control" value="10:05 AM" />
                   </div>
-                  <div class="mb-3">
-                    <label for="ticketPrice" class="form-label">Ticket price</label>
-                    <input type="text" class="form-control" id="price" required>
-                  </div>
+                    >
                   <div class="mb-3">
                     <button type="submit" id="editbtn" onclick="editJourney()" class="btn btn-primary">Save
                       changes</button>
@@ -264,24 +212,18 @@
         </div>
         <table id="example" class="table table-striped" style="width:100%">
           <thead>
-            <th>Id</th>
             <th>Journey Name </th>
-            <th>source point ID</th>
-            <th>destination point ID</th>
-            <th>Ticket price </th>
-            <th>Show stop point</th>
-            <th>Add stop point</th>
+            <th>Bus ID</th>
+            <th>Time</th>
+            <th>passengers Number</th>
             <th>Edit </th>
             <th>Delete </th>
           </thead>
           <tfoot>
-            <th>Id</th>
             <th>Journey Name </th>
-            <th>source point ID</th>
-            <th>destination point ID</th>
-            <th>Ticket price </th>
-            <th>Show stop point</th>
-            <th>Add stop point</th>
+            <th>Bus ID</th>
+            <th>Time</th>
+            <th>passengers Number</th>
             <th>Edit </th>
             <th>Delete </th>
           </tfoot>
