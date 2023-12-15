@@ -43,7 +43,6 @@ $(document).ready(function() {
         var point_id = {
             id: data.id
         };
-        alert(point_id.id);
         $.ajax({
             url: "http://localhost:8080/Admin/DeletePoint",
             method: "POST",
@@ -55,7 +54,6 @@ $(document).ready(function() {
                      window.location.reload() ;
                 }else {
                     alert("Error") ; 
-
                 }
             },
             error: function(error) {

@@ -15,13 +15,13 @@ xhr.send() ;
 //     xhr.onreadystatechange = function() {
 //         if (xhr.readyState == 4 && xhr.status == 200) {
 //             var bus = JSON.parse(xhr.responseText);
-//             var busData = bus.map(function (bus) {
-//                 return {
-//                     id: bus.id,
-//                     driverID: bus.driver ? bus.driver.userID : null,
-//                     isWorking: bus.isWorking
-//                 };
-//             });           
+            var busData = bus.map(function (bus) {
+                return {
+                    id: bus.id,
+                    driverID: bus.driver ? bus.driver.userID : null,
+                    isWorking: bus.isWorking
+                };
+            });           
 //             $("#example").DataTable({
 //                 data: busData,
 //                 columns: [
