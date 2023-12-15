@@ -97,13 +97,27 @@ $('#example').on('click', '.add-button', function () {
 });
 
 function editFunction(data) {
-    var sourcePointDropdown = $("#sourcePoint");
-    var destinationPointDropdown = $("#destinationPoint");
+    var sourcePoint = document.getElementById("sourcePointEdit") ; 
+    var destinationPoint = document.getElementById("destinationPointEdit") ; 
+    document.getElementById("price").value = data.price  ; 
+    document.getElementById("journeyName").value = data.name ;
+    document.getElementById("idJourney").value = data.id;
     $.ajax({
         url: "http://localhost:8080/Organizer/ViewAllPoint",
         method: "GET",
         success: function (points) {
-            console.log(points);
+            for(var i = 0; i < points.length ; i++){
+                    var option = document.createElement("option");
+                    option.value = points[i].id ;
+                    option.text = points[i].pointName;
+                    sourcePoint.appendChild(option);
+            }
+            for(var i = 0; i < points.length ; i++){
+                var option = document.createElement("option");
+                option.value = points[i].id ;
+                option.text = points[i].pointName;
+                destinationPoint.appendChild(option);
+        }
             $('#editJourneyModal').modal('show');
         },
         error: function (error) {
@@ -112,6 +126,7 @@ function editFunction(data) {
     });
     
 }
+
 
 function deleteFunction(data) {
     var id =  {
@@ -139,23 +154,29 @@ function showFunction(data) {
 }
 
 function addFunction() {
-    console.log("Add button clicked");
+    var stopPoint = document.getElementById("stopPoint") ; 
+$.ajax({
+    url: "http://localhost:8080/Organizer/ViewAllPoint",
+    method: "GET",
+    success: function (points) {
+        for(var i = 0; i < points.length ; i++){
+            var option = document.createElement("option");
+            option.value = points[i].id ;
+            option.text = points[i].pointName;
+            stopPoint.appendChild(option);
+    }
+        $('#addstopPoint').modal('show');
+    },
+    error: function (error) {
+        alert(error.responseText);
+    }
+});
 }
     });
     function showAddFeild(){
         $('#addJourney').modal('show');
     }
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 
@@ -198,3 +219,33 @@ function addFunction() {
 
 
 
+function editJourney() {
+    var sourcePoint = document.getElementById("sourcePointEdit").value;  
+    var destinationPoint = document.getElementById("destinationPointEdit").value;  
+    var journeyName = document.getElementById("journeyName").value;  
+    var ticketPrice = document.getElementById("price").value;  
+    var id = document.getElementById("idJourney").value;
+    var data = {
+        id : id,  
+        sourcePoint : sourcePoint , 
+        destinationPoint : destinationPoint , 
+        price : ticketPrice ,
+        name : journeyName 
+    }
+    $.ajax({
+        url : "http://localhost:8080/Organizer/EditJourney" , 
+        method : "POST"  , 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        data: JSON.stringify(data),
+            success: function (data) {
+            alert("Journey updated successfully!");
+            window.location.reload();
+        },
+        error: function (error) {
+            alert("Error in delete Journey");
+        }
+    });
+
+}

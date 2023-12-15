@@ -172,20 +172,20 @@
                 <input type="text" id="idBus" hidden>
                 <div class="mb-3">
                   <label for="sourcePoint" class="form-label">source point</label>
-                  <select id="sourcePoint" class="form-select">
+                  <select id="sourcePointAdd" class="form-select">
                   </select>
                 </div>
                 <div class="mb-3">
                   <label for="editEmail" class="form-label">destination point</label>
-                  <select id="isWorking" class="form-select">
+                  <select id="destinationPointAdd" class="form-select">
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label for="userName" class="form-label">Journey Name</label>
+                  <label for="journeyNameAdd" class="form-label">Journey Name</label>
                   <input type="text" class="form-control" id="addPointName" required>
                 </div>
                 <div class="mb-3">
-                  <label for="ticketPrice" class="form-label">Ticket price</label>
+                  <label for="ticketPriceAdd" class="form-label">Ticket price</label>
                   <input type="text" class="form-control" id="addPointName" required>
                 </div>
                 <div class="mb-3">
@@ -213,8 +213,8 @@
               <form id="addUserForm">
                 <input type="text" id="idBus" hidden>
                 <div class="mb-3">
-                  <label for="sourcePoint" class="form-label">Stop point name </label>
-                  <select id="sourcePoint" class="form-select">
+                  <label for="stopPoint" class="form-label">Stop point name </label>
+                  <select id="stopPoint" class="form-select">
                   </select>
                 </div>
                 <div class="mb-3">
@@ -259,25 +259,25 @@
                 <form id="editUserForm">
                   <input type="text" id="idJourney" hidden>
                   <div class="mb-3">
-                    <label for="sourcePoint" class="form-label">source point</label>
-                    <select id="sourcePoint" class="form-select">
+                    <label for="sourcePointEdit" class="form-label">source point</label>
+                    <select id="sourcePointEdit" class="form-select">
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label for="destinationPoint" class="form-label">destination point</label>
-                    <select id="destinationPoint" class="form-select">
+                    <label for="destinationPointEdit" class="form-label">destination point</label>
+                    <select id="destinationPointEdit" class="form-select">
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label for="userName" class="form-label">Journey Name</label>
+                    <label for="journeyNameEdit" class="form-label">Journey Name</label>
                     <input type="text" class="form-control" id="journeyName" required>
                   </div>
                   <div class="mb-3">
-                    <label for="ticketPrice" class="form-label">Ticket price</label>
+                    <label for="ticketPriceEdit" class="form-label">Ticket price</label>
                     <input type="text" class="form-control" id="price" required>
                   </div>
                   <div class="mb-3">
-                    <button type="submit" id="editbtn" onclick="editJourney()" class="btn btn-primary">Save
+                    <button type="button" id="editbtn" onclick="editJourney()" class="btn btn-primary">Save
                       changes</button>
                     <button type="button" class="btn btn-secondary" onclick="deleteField()"
                       data-bs-dismiss="modal">Cancel</button>
