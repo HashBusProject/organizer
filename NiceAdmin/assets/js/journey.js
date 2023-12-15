@@ -92,11 +92,14 @@ $('#example').on('click', '.show-button', function () {
 
 $('#example').on('click', '.add-button', function () {
     addFunction();
+
 });
 
 
 function editFunction(data) {
-    console.log("Edit button clicked for:", data);
+    
+    $('#editJourneyModal').modal('show');
+
 }
 
 function deleteFunction(data) {
