@@ -145,4 +145,56 @@ function addFunction() {
     function showAddFeild(){
         $('#addJourney').modal('show');
     }
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function fetchEndpointDataForJourney(journeyId) {
+        const apiUrl = `your-api-endpoint?journeyId=${journeyId}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                createEndpointCard(data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    function createEndpointCard(data) {
+        const cardContainer = document.getElementById('cardContainer');
+
+        const card = document.createElement('div');
+        card.className = 'card text-white bg-primary mb-3';
+        card.style = 'max-width: 18rem;';
+
+        const cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+
+        const cardTitle = document.createElement('h5');
+        cardTitle.className = 'card-title';
+        cardTitle.style = 'color: aliceblue;';
+        cardTitle.textContent = data.endpointName;  
+
+        cardBody.appendChild(cardTitle);
+
+        card.appendChild(cardBody);
+
+        cardContainer.appendChild(card);
+    }
+
+
+
+
