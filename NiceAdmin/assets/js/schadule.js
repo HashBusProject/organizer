@@ -81,3 +81,29 @@ $(document).ready(function () {
     });
     
 });
+
+function showAddFeild() {
+    var journeySelect = document.getElementById("journeyName") ; 
+    $.ajax({
+        url : "http://localhost:8080/Organizer/GetAllJourneys" , 
+        method : "GET" , 
+        contentType: 'application/json',
+        success:function(journey) { 
+            for(var i = 0; i < journey.length ; i++){
+                var option = document.createElement("option");
+                option.value = journey[i].id ;
+                option.text = journey[i].name;
+                journeySelect.appendChild(option);
+        }
+        $('#addTrip').modal('show');
+        } , 
+
+    });
+}
+
+function addSchedule(){
+    var journey = document.getElementById("journeyName").value ; 
+    var bus = document.getElementById("busID").value ; 
+    var time = document.getElementById("timeInput").value ; 
+    alert(journey + " " + bus + " " + time) ; 
+}

@@ -81,21 +81,13 @@
             </a>
           </li>
         </ul>
-
-
-
-
       <li class="nav-heading">Pages</li>
-
       <li class="nav-item">
         <a class="nav-link collapsed" href="users-profile.html">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
-      </li><!-- End Profile Page Nav -->
-
-
-
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-register.html">
           <i class="bi bi-card-list"></i>
@@ -108,13 +100,11 @@
     <div class="pagetitle">
       <h1>Schedules </h1>
 
-    </div><!-- End Page Title -->
+    </div>
     <section class="section dashboard">
       <div class="row">
-        <!-- Left side columns -->
         <div class="col-lg-8">
           <div class="row">
-            <!-- Sales Card -->
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
                 <div class="card-body">
@@ -124,7 +114,7 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <div class="ps-3">
-                      <h6 id="numberOfJourneys"></h6>
+                      <h6 id="numberOfTrips"></h6>
                     </div>
                   </div>
                 </div>
@@ -135,7 +125,7 @@
         <button type="button" onclick="showAddFeild()" class="btn btn-danger rounded-pill col-lg-7 mx-auto"
           style="margin: 10px;">Add Trip in the Schedule</button>
       </div>
-      <div class="modal fade" id="addTrip" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+      <div class="modal fade" id="addTrip" tabindex="-1" aria-labelledby="add+ScheduleModellabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -155,11 +145,12 @@
                   <select id="busID" class="form-select">
                   </select>
                 </div>
-                <div class="cs-form">
-                  </div>
-                
                 <div class="mb-3">
-                  <button type="submit" id="editTrip" onclick="editBus()" class="btn btn-primary">Save changes</button>
+                <label for="timeInput">Select Time:</label>
+                <input type="text" id="timeInput" name="timeInput" pattern="[0-2][0-9]:[0-5][0-9]" placeholder="HH:mm" required>
+              </div>
+                <div class="mb-3">
+                  <button type="submit" id="editTrip" onclick="addSchedule()" class="btn btn-primary">Save changes</button>
                   <button type="button" class="btn btn-secondary" onclick="deleteField()"
                     data-bs-dismiss="modal">Cancel</button>
                 </div>
@@ -191,7 +182,6 @@
                   </div>
                   <div class="cs-form">
                   </div>
-                    >
                   <div class="mb-3">
                     <button type="submit" id="editbtn" onclick="editJourney()" class="btn btn-primary">Save
                       changes</button>
