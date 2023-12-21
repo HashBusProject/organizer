@@ -11,7 +11,7 @@ xhr.send();
 
 function getNameOfPoint(id, callback) {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:8080/Organizer/GetNameOfPoint?id=" + id, true);
+    xhr.open("GET", "http://localhost:8080/Organizer/GetNameOfPoint?pointId="+ id, true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var name = xhr.responseText;
@@ -38,7 +38,7 @@ $(document).ready(function () {
                     });
                 });
             });
-                        Promise.all(pointNamePromises)
+                Promise.all(pointNamePromises)
                 .then(function () {
                     $("#example").DataTable({
                         data: journeys,
@@ -91,7 +91,8 @@ $('#example').on('click', '.show-button', function () {
 
 
 $('#example').on('click', '.add-button', function () {
-    addFunction();
+    var data = $("#example").DataTable().row($(this).parents('tr')).data();
+    addFunction(data);
     $('#addstopPoint').modal('show');
 
 });
@@ -150,11 +151,24 @@ function deleteFunction(data) {
 }
 
 function showFunction(data) {
-    console.log("Show button clicked for:", data);
+    $.ajax({
+        url : " " , 
+        method : "GET" , 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        success:function(data){
+            createEndpointCard(data) ; 
+        }, 
+    });
+    $('#showStopPoint').modal('show');
+
 }
 
-function addFunction() {
+function addFunction(data) {
     var stopPoint = document.getElementById("stopPoint") ; 
+    document.getElementById("journeyId").value = data.id ; 
+    document.getElementById("index").value = data.stopPoints.length ; 
 $.ajax({
     url: "http://localhost:8080/Organizer/ViewAllPoint",
     method: "GET",
@@ -174,50 +188,59 @@ $.ajax({
 }
     });
     function showAddFeild(){
-        $('#addJourney').modal('show');
-    }
-    
-
-
-
-
-
-
-    function fetchEndpointDataForJourney(journeyId) {
-        const apiUrl = `your-api-endpoint?journeyId=${journeyId}`;
-
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                createEndpointCard(data);
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    }
-
-    function createEndpointCard(data) {
-        const cardContainer = document.getElementById('cardContainer');
-
-        const card = document.createElement('div');
-        card.className = 'card text-white bg-primary mb-3';
-        card.style = 'max-width: 18rem;';
-
-        const cardBody = document.createElement('div');
-        cardBody.className = 'card-body';
-
-        const cardTitle = document.createElement('h5');
-        cardTitle.className = 'card-title';
-        cardTitle.style = 'color: aliceblue;';
-        cardTitle.textContent = data.endpointName;  
-
-        cardBody.appendChild(cardTitle);
-
-        card.appendChild(cardBody);
-
-        cardContainer.appendChild(card);
+        var sourcePoint = document.getElementById("sourcePointAdd");
+        var destinationPoint = document.getElementById("destinationPointAdd");
+        $.ajax({
+            url: "http://localhost:8080/Organizer/ViewAllPoint",
+            method: "GET",
+            success: function (points) {
+                for(var i = 0; i < points.length ; i++){
+                    var option = document.createElement("option");
+                    option.value = points[i].id ;
+                    option.text = points[i].pointName;
+                    sourcePoint.appendChild(option);
+                }
+                for(var i =0 ; i < points.length ; i++){
+                    var option = document.createElement("option");
+                    option.value = points[i].id ;
+                    option.text = points[i].pointName;
+                    destinationPoint.appendChild(option);
+                }
+                $('#addJourney').modal('show');
+            },
+            error: function (error) {
+                alert(error.responseText);
+            }
+        });
     }
 
-
-
+    function addJourney(){
+        var sourcePoint = document.getElementById("sourcePointAdd").value;
+        var destinationPoint = document.getElementById("destinationPointAdd").value;
+        var journeyname = document.getElementById("addPointName").value;
+        var price = document.getElementById("addTicketJourney").value;
+        journey = {
+            sourcePoint : sourcePoint , 
+            destinationPoint : destinationPoint , 
+            name : journeyname , 
+            price : price
+        }
+        $.ajax({
+            url : "http://localhost:8080/Organizer/AddJourney", 
+            method: "POST" , 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data : JSON.stringify(journey) , 
+            success:function(data) {
+                alert("Journey added successfully!") ; 
+                window.location.reload() ;
+            }, 
+            error:function(data) {
+                alert("Error in adding data") ; 
+            }
+        });
+    }
 
 function editJourney() {
     var sourcePoint = document.getElementById("sourcePointEdit").value;  
@@ -247,5 +270,114 @@ function editJourney() {
             alert("Error in delete Journey");
         }
     });
-
 }
+
+function addStopPoint(){
+    var stopPointId = document.getElementById ("stopPoint").value ; 
+    var index = document.getElementById("index").value ; 
+    var journeyId = document.getElementById("journeyId").value ; 
+    $.ajax({
+        url: "http://localhost:8080/Organizer/AddStopPoint?pointId=" + stopPointId + "&journeyId=" + journeyId + "&index=" + index , 
+        method : "POST" , 
+        headers: {
+            'Content-Type': 'application/json',
+        }, 
+        success:function(data) { 
+            alert("Stop point added asunccessfully!") ; 
+            window.location.reload(); 
+        } , 
+        error:function(data) {
+            alert("Error to add stop point") ; 
+        }
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // function fetchEndpointDataForJourney(journeyId) {
+    //     const apiUrl = `your-api-endpoint?journeyId=${journeyId}`;
+
+    //     fetch(apiUrl)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             createEndpointCard(data);
+    //         })
+    //         .catch(error => console.error('Error fetching data:', error));
+    // }
+
+    // function createEndpointCard(data) {
+    //     const cardContainer = document.getElementById('cardContainer');
+
+    //     const card = document.createElement('div');
+    //     card.className = 'card text-white bg-primary mb-3';
+    //     card.style = 'max-width: 18rem;';
+
+    //     const cardBody = document.createElement('div');
+    //     cardBody.className = 'card-body';
+
+    //     const cardTitle = document.createElement('h5');
+    //     cardTitle.className = 'card-title';
+    //     cardTitle.style = 'color: aliceblue;';
+    //     cardTitle.textContent = data.endpointName;  
+
+    //     cardBody.appendChild(cardTitle);
+
+    //     card.appendChild(cardBody);
+
+    //     cardContainer.appendChild(card);
+    // }

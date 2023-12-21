@@ -9,3 +9,31 @@ $(document).ready(function() {
     xhr.send();
     });
     
+
+    $(document).ready(function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:8080/Organizer/GetAllTickets" , true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var tickets = JSON.parse(xhr.responseText);
+                const ticketData = tickets.map(function(ticket) {
+                    const journeyName = ticket.journey ? ticket.journey.name : null;
+                    const studentEmail = ticket.user ? ticket.user.email : null;
+                    return {
+                        id: ticket.id,
+                        journeyName: journeyName,
+                        studentEmail: studentEmail
+                    };
+                });
+                $("#example").DataTable({
+                    data: ticketData,
+                    columns: [
+                        { data: "id" },
+                        { data: "journeyName" },
+                        { data: "studentEmail" },
+                    ],
+                });
+            }
+        };
+        xhr.send();
+    });

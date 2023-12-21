@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 $(document).ready(function() {
     $.ajax({
-        url: "http://localhost:8080/Admin/GetAllPoint",
+        url: "http://localhost:8080/Organizer/ViewAllPoint",
         method: "GET",
         success: function(persons) {
             $("#example").DataTable({
@@ -50,8 +50,8 @@ $(document).ready(function() {
             contentType: 'application/json',
             success: function(data) {
                 if(data){
-                     alert("Point Was Deleted") ; 
-                     window.location.reload() ;
+                    alert("Point Was Deleted") ; 
+                    window.location.reload() ;
                 }else {
                     alert("Error") ; 
                 }

@@ -14,7 +14,7 @@ function login() {
         data: JSON.stringify(user),
         success: function (data) {
             alert("Login successful");
-            window.location.href = "AddUser.html" ;
+            window.location.href = "addstoppoint.html" ;
         },
         error: function (xhr) {
             alert("Login failed: " + xhr.responseText);
