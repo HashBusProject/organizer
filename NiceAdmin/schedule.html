@@ -125,66 +125,32 @@
         <button type="button" onclick="showAddFeild()" class="btn btn-danger rounded-pill col-lg-7 mx-auto"
           style="margin: 10px;">Add Trip in the Schedule</button>
       </div>
-      <div class="modal fade" id="addTrip" tabindex="-1" aria-labelledby="add+ScheduleModellabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="userModalLabel">Add Schedules</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="addUserForm">
-                <input type="text" id="idBus" hidden>
-                <div class="mb-3">
-                  <label for="journeyName" class="form-label">Journey Name</label>
-                  <select id="journeyName" class="form-select">
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="busID" class="form-label">Bus ID</label>
-                  <select id="busID" class="form-select">
-                  </select>
-                </div>
-                <div class="mb-3">
-                <label for="timeInput">Select Time:</label>
-                <input type="text" id="timeInput" name="timeInput" pattern="[0-2][0-9]:[0-5][0-9]" placeholder="HH:mm" required>
-              </div>
-                <div class="mb-3">
-                  <button type="submit" id="editTrip" onclick="addSchedule()" class="btn btn-primary">Save changes</button>
-                  <button type="button" class="btn btn-secondary" onclick="deleteField()"
-                    data-bs-dismiss="modal">Cancel</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>      
-        <div class="modal fade" id="editTrip" tabindex="-1" aria-labelledby="editUserModalLabel"
-          aria-hidden="true">
+        <div class="modal fade" id="addTrip" tabindex="-1" aria-labelledby="add+ScheduleModellabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="editTrip">Edit Schedules</h5>
+                <h5 class="modal-title" id="userModalLabel">Add Schedules</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form id="editTrip">
-                  <input type="text" id="idTrip" hidden>
+                <form id="addUserForm">
+                  <input type="text" id="idBus" hidden>
                   <div class="mb-3">
                     <label for="journeyName" class="form-label">Journey Name</label>
                     <select id="journeyName" class="form-select">
                     </select>
                   </div>
                   <div class="mb-3">
-                    <label for="busId" class="form-label">Bus ID</label>
-                    <select id="busId" class="form-select">
+                    <label for="busID" class="form-label">Bus ID</label>
+                    <select id="busID" class="form-select">
                     </select>
                   </div>
-                  <div class="cs-form">
-                  </div>
                   <div class="mb-3">
-                    <button type="submit" id="editbtn" onclick="editJourney()" class="btn btn-primary">Save
-                      changes</button>
+                  <label for="timeInput">Select Time:</label>
+                  <input type="text" id="timeInput" name="timeInput" pattern="[0-2][0-9]:[0-5][0-9]" placeholder="HH:mm" required>
+                </div>
+                  <div class="mb-3">
+                    <button type="submit" id="editTrip" onclick="addSchedule()" class="btn btn-primary">Save changes</button>
                     <button type="button" class="btn btn-secondary" onclick="deleteField()"
                       data-bs-dismiss="modal">Cancel</button>
                   </div>
@@ -192,7 +158,41 @@
               </div>
             </div>
           </div>
+      </div>      
+      <div class="modal fade" id="editTripModal" tabindex="-1" aria-labelledby="editTripModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editTripModalLabel">Edit Schedules</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="editTripForm">
+                <input type="text" id="idTripEdit" hidden>
+                <div class="mb-3">
+                  <label for="journeyNameEdit" class="form-label">Journey Name</label>
+                  <select id="journeyNameEdit" class="form-select">
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="busIdEdit" class="form-label">Bus ID</label>
+                  <select id="busIdEdit" class="form-select">
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="timeInput">Select Time:</label>
+                  <input type="text" id="timeInputEdit" name="timeInput" pattern="[0-2][0-9]:[0-5][0-9]" placeholder="HH:mm" required>
+                </div>
+                <div class="mb-3">
+                  <button type="submit" id="editbtn" onclick="editTrip()" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" onclick="deleteField()" data-bs-dismiss="modal">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
+      </div>
+      
         <table id="example" class="table table-striped" style="width:100%">
           <thead>
             <th>Journey Name </th>
