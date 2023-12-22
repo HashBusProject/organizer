@@ -43,6 +43,8 @@ $(document).ready(function () {
                         { data: "journeyName" },
                         { data: "bus" },
                         { data: "time" },
+                        { data: "date" },
+                        { data: "finished" },
                         { data: "passengersNumber" },
                         {
                             data: null,
@@ -189,11 +191,14 @@ function addSchedule(){
     var journey = document.getElementById("journeyName").value ; 
     var bus = document.getElementById("busID").value ; 
     var time = document.getElementById("timeInput").value ; 
+    var date = document.getElementById("datepicker").value ; 
+
     time += ":00" ; 
     schedule = { 
         journey : journey , 
         bus : bus , 
-        time : time 
+        time : time  , 
+        date : date
     }
 
     $.ajax({
@@ -203,6 +208,7 @@ function addSchedule(){
         data : JSON.stringify(schedule) ,
         success:function(data) {
             alert("Schedule added successfully!") ; 
+            window.location.reload() ; 
         } , 
         error:function(error) {
             alert("Error in add schedule") ; 
@@ -217,12 +223,14 @@ function editTrip() {
     var bus = document.getElementById("busIdEdit").value ; 
     var journey = document.getElementById("journeyNameEdit").value; 
     var time = document.getElementById("timeInputEdit").value;
+    var date = document.getElementById("datepicker").value ; 
     time += ":00" ;
     var schedule = {
         scheduleId : schedule_id , 
         bus : bus , 
         journey : journey  , 
-        time : time
+        time : time , 
+        date : date 
     }
     $.ajax({
         url :  "http://localhost:8080/Organizer/EditSchedule",
@@ -231,6 +239,7 @@ function editTrip() {
         data : JSON.stringify(schedule) ,
         success:function(data) {
             alert("Trip updated successfully!") ; 
+            window.location.reload() ; 
         } , 
         error:function(data) {
             alert("Error in update trip") ; 

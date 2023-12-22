@@ -6,7 +6,7 @@ function login() {
         password : password 
     };
     $.ajax({
-        url: "https://global-memento-407716.uc.r.appspot.com/Admin/Login",
+        url: "http://localhost:8080/Organizer/Login",
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -14,7 +14,7 @@ function login() {
         data: JSON.stringify(user),
         success: function (data) {
             alert("Login successful");
-            window.location.href = "addstoppoint.html" ;
+            window.location.href = "schedule.html" ;
         },
         error: function (xhr) {
             alert("Login failed: " + xhr.responseText);

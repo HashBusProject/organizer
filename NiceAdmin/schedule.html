@@ -46,7 +46,7 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
-        
+
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
@@ -111,7 +111,7 @@
                   <h5 class="card-title">Number of Trip </h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="fas fa-clock"></i>
+                      <i class="fas fa-clock"></i>
                     </div>
                     <div class="ps-3">
                       <h6 id="numberOfTrips"></h6>
@@ -125,40 +125,46 @@
         <button type="button" onclick="showAddFeild()" class="btn btn-danger rounded-pill col-lg-7 mx-auto"
           style="margin: 10px;">Add Trip in the Schedule</button>
       </div>
-        <div class="modal fade" id="addTrip" tabindex="-1" aria-labelledby="add+ScheduleModellabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="userModalLabel">Add Schedules</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form id="addUserForm">
-                  <input type="text" id="idBus" hidden>
-                  <div class="mb-3">
-                    <label for="journeyName" class="form-label">Journey Name</label>
-                    <select id="journeyName" class="form-select">
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                    <label for="busID" class="form-label">Bus ID</label>
-                    <select id="busID" class="form-select">
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                  <label for="timeInput">Select Time:</label>
-                  <input type="text" id="timeInput" name="timeInput" pattern="[0-2][0-9]:[0-5][0-9]" placeholder="HH:mm" required>
+      <div class="modal fade" id="addTrip" tabindex="-1" aria-labelledby="add+ScheduleModellabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="userModalLabel">Add Schedules</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="addUserForm">
+                <input type="text" id="idBus" hidden>
+                <div class="mb-3">
+                  <label for="journeyName" class="form-label">Journey Name</label>
+                  <select id="journeyName" class="form-select">
+                  </select>
                 </div>
-                  <div class="mb-3">
-                    <button type="submit" id="editTrip" onclick="addSchedule()" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" onclick="deleteField()"
-                      data-bs-dismiss="modal">Cancel</button>
-                  </div>
-                </form>
-              </div>
+                <div class="mb-3">
+                  <label for="busID" class="form-label">Bus ID</label>
+                  <select id="busID" class="form-select">
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="timeInput">Select Time:</label>
+                  <input type="text" id="timeInput" name="timeInput" pattern="[0-2][0-9]:[0-5][0-9]" placeholder="HH:mm"
+                    required>
+                </div>
+                <div class="mb-3">
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </div>
+                <div class="mb-3">
+                  <button type="submit" id="editTrip" onclick="addSchedule()" class="btn btn-primary">Save
+                    changes</button>
+                  <button type="button" class="btn btn-secondary" onclick="deleteField()"
+                    data-bs-dismiss="modal">Cancel</button>
+                </div>
+              </form>
             </div>
           </div>
-      </div>      
+        </div>
+      </div>
       <div class="modal fade" id="editTripModal" tabindex="-1" aria-labelledby="editTripModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -181,36 +187,42 @@
                 </div>
                 <div class="mb-3">
                   <label for="timeInput">Select Time:</label>
-                  <input type="text" id="timeInputEdit" name="timeInput" pattern="[0-2][0-9]:[0-5][0-9]" placeholder="HH:mm" required>
+                  <input type="text" id="timeInputEdit" name="timeInput" pattern="[0-2][0-9]:[0-5][0-9]"
+                    placeholder="HH:mm" required>
                 </div>
                 <div class="mb-3">
                   <button type="submit" id="editbtn" onclick="editTrip()" class="btn btn-primary">Save changes</button>
-                  <button type="button" class="btn btn-secondary" onclick="deleteField()" data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-secondary" onclick="deleteField()"
+                    data-bs-dismiss="modal">Cancel</button>
                 </div>
               </form>
             </div>
           </div>
         </div>
       </div>
-      
-        <table id="example" class="table table-striped" style="width:100%">
-          <thead>
-            <th>Journey Name </th>
-            <th>Bus ID</th>
-            <th>Time</th>
-            <th>passengers Number</th>
-            <th>Edit </th>
-            <th>Delete </th>
-          </thead>
-          <tfoot>
-            <th>Journey Name </th>
-            <th>Bus ID</th>
-            <th>Time</th>
-            <th>passengers Number</th>
-            <th>Edit </th>
-            <th>Delete </th>
-          </tfoot>
-        </table>
+
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+          <th>Journey Name </th>
+          <th>Bus ID</th>
+          <th>Time</th>
+          <th>Date</th>
+          <th>Finished</th>
+          <th>Passengers Number</th>
+          <th>Edit </th>
+          <th>Delete </th>
+        </thead>
+        <tfoot>
+          <th>Journey Name </th>
+          <th>Bus ID</th>
+          <th>Time</th>
+          <th>Date</th>
+          <th>Finished</th>
+          <th>Passengers Number</th>
+          <th>Edit </th>
+          <th>Delete </th>
+        </tfoot>
+      </table>
     </section>
   </main>
 

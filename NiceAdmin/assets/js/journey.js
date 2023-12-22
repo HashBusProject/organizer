@@ -277,7 +277,7 @@ function addStopPoint(){
     var index = document.getElementById("index").value ; 
     var journeyId = document.getElementById("journeyId").value ; 
     $.ajax({
-        url: "http://localhost:8080/Organizer/AddStopPoint?pointId=" + stopPointId + "&journeyId=" + journeyId + "&index=" + index , 
+        url: "http://localhost:8080/Organizer/AddStopPointToJourney?pointId=" + stopPointId + "&journeyId=" + journeyId + "&index=" + index , 
         method : "POST" , 
         headers: {
             'Content-Type': 'application/json',
