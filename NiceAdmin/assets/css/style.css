@@ -15,7 +15,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #FFEAE9;
+  background: #edf3ff;
   color: #444444;
 }
 
@@ -86,7 +86,7 @@ h6 {
   transition: all 0.4s;
 }
 .btn-danger  {
-background-color: #A70303;
+background-color: #034ea7;
 }
 .back-to-top i {
   font-size: 24px;
@@ -131,6 +131,7 @@ background-color: #A70303;
 }
 
 .dropdown-menu .dropdown-footer a:hover {
+
   text-decoration: none;
 }
 
@@ -201,7 +202,7 @@ background-color: #A70303;
 }
 
 .bg-danger-light {
-  background-color: #f8d7da;
+  background-color: #d7d9f8;
   border-color: #f8d7da;
 }
 
@@ -688,7 +689,7 @@ background-color: #A70303;
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #A70303;
+  color: #034ea7;
   transition: 0.3;
   background: #f6f9ff;
   padding: 10px 15px;
@@ -698,7 +699,7 @@ background-color: #A70303;
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color: #A70303;
+  color: #034ea7;
 }
 
 .sidebar-nav .nav-link.collapsed {
@@ -711,12 +712,12 @@ background-color: #A70303;
 }
 
 .sidebar-nav .nav-link:hover {
-  color: #A70303;
+  color: #034ea7;
   background: #f6f9ff;
 }
 
 .sidebar-nav .nav-link:hover i {
-  color: #A70303;
+  color: #034ea7;
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -754,7 +755,7 @@ background-color: #A70303;
 
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-  color: #A70303;
+  color: #034ea7;
 }
 
 .sidebar-nav .nav-content a.active i {
@@ -772,7 +773,7 @@ background-color: #A70303;
 }
 
 .dashboard .filter .icon {
-  color: #A70303;
+  color: #034ea7;
   padding-right: 20px;
   padding-bottom: 5px;
   transition: 0.3s;
@@ -781,7 +782,7 @@ background-color: #A70303;
 
 .dashboard .filter .icon:hover,
 .dashboard .filter .icon:focus {
-  color: #A70303;
+  color: #034ea7;
 }
 
 .dashboard .filter .dropdown-header {
@@ -825,7 +826,7 @@ background-color: #A70303;
 }
 
 .dashboard .sales-card .card-icon {
-  color: #A70303;
+  color: #034ea7;
   background: #f6f6fe;
 }
 

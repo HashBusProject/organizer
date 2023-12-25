@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var xhr = new XMLHttpRequest() ; 
-    xhr.open("GET" , "http://localhost:8080/Organizer/GetNumberOfTickets" , true) ; 
+    xhr.open("GET" , "https://global-memento-407716.uc.r.appspot.com/Organizer/GetNumberOfTickets" , true) ; 
     xhr.onreadystatechange = function () {
         if(xhr.readyState == 4 && xhr.status == 200){
             document.getElementById("numberOfTickets").innerHTML = xhr.responseText ;
@@ -12,7 +12,7 @@ $(document).ready(function() {
 
     $(document).ready(function() {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost:8080/Organizer/GetAllTickets" , true);
+        xhr.open("GET", "https://global-memento-407716.uc.r.appspot.com/Organizer/GetAllTickets" , true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var tickets = JSON.parse(xhr.responseText);

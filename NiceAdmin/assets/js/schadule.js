@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET" , "http://localhost:8080/Organizer/GetNumberOfSchedules" , true);
+    xhr.open("GET" , "https://global-memento-407716.uc.r.appspot.com/Organizer/GetNumberOfSchedules" , true);
     xhr.onreadystatechange = function () {
         if(xhr.readyState == 4 && xhr.status == 200){
             var data = xhr.responseText;
@@ -11,7 +11,7 @@ $(document).ready(function(){
 });
 function getNameOfJourney(id, callback) {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:8080/Organizer/GetNameOfJourneyById?journeyId="+ id, true);
+    xhr.open("GET", "https://global-memento-407716.uc.r.appspot.com/Organizer/GetNameOfJourneyById?journeyId="+ id, true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var name = xhr.responseText;
@@ -23,7 +23,7 @@ function getNameOfJourney(id, callback) {
 
 $(document).ready(function () {
     $.ajax({
-        url: "http://localhost:8080/Organizer/GetAllSchedule",
+        url: "https://global-memento-407716.uc.r.appspot.com/Organizer/GetAllSchedule",
         method: "GET",
         contentType: 'application/json',
         success: function (trips) {
@@ -72,7 +72,7 @@ $(document).ready(function () {
         if(bus_id_edit.length > 0)
             bus_id_edit.innerHTML = ""; 
         $.ajax({
-            url: "http://localhost:8080/Organizer/GetAllJourneys",
+            url: "https://global-memento-407716.uc.r.appspot.com/Organizer/GetAllJourneys",
             method: "GET",
             contentType: 'application/json',
             success: function (journeys) {
@@ -96,7 +96,7 @@ $(document).ready(function () {
             }
 
                 $.ajax({
-                    url: "http://localhost:8080/Organizer/GetIdOfBuses",
+                    url: "https://global-memento-407716.uc.r.appspot.com/Organizer/GetIdOfBuses",
                     method: "GET",
                     contentType: 'application/json',
                     success: function (busIds) {
@@ -131,7 +131,7 @@ $(document).ready(function () {
         var data = $("#example").DataTable().row($(this).parents('tr')).data();
         console.log(data) ;
         $.ajax({
-            url : "http://localhost:8080/Organizer/DeleteSchedule?scheduleId="+data.scheduleId, 
+            url : "https://global-memento-407716.uc.r.appspot.com/Organizer/DeleteSchedule?scheduleId="+data.scheduleId, 
             method : "DELETE" , 
             contentType: 'application/json',
             success:function(data){
@@ -156,7 +156,7 @@ function showAddFeild() {
         return;
     }
     $.ajax({
-        url : "http://localhost:8080/Organizer/GetAllJourneys" , 
+        url : "https://global-memento-407716.uc.r.appspot.com/Organizer/GetAllJourneys" , 
         method : "GET" , 
         contentType: 'application/json',
         success:function(journey) { 
@@ -168,7 +168,7 @@ function showAddFeild() {
         }
 
             $.ajax({
-                url : "http://localhost:8080/Organizer/GetIdOfBuses" ,
+                url : "https://global-memento-407716.uc.r.appspot.com/Organizer/GetIdOfBuses" ,
                 method : "GET" , 
                 contentType: 'application/json',
                 success:function(busId){
@@ -202,7 +202,7 @@ function addSchedule(){
     }
 
     $.ajax({
-        url : "http://localhost:8080/Organizer/AddSchedule" , 
+        url : "https://global-memento-407716.uc.r.appspot.com/Organizer/AddSchedule" , 
         method : "POST" , 
         contentType: 'application/json',
         data : JSON.stringify(schedule) ,
@@ -233,7 +233,7 @@ function editTrip() {
         date : date 
     }
     $.ajax({
-        url :  "http://localhost:8080/Organizer/EditSchedule",
+        url :  "https://global-memento-407716.uc.r.appspot.com/Organizer/EditSchedule",
         method : "PUT" , 
         contentType: 'application/json',
         data : JSON.stringify(schedule) ,

@@ -35,7 +35,7 @@
 
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between ">
-      <a href="AddUser.html" class="logo d-flex align-items-center ">
+      <a href="journey.html" class="logo d-flex align-items-center ">
         <img src="assets/img/logo.png" alt="" class="animated slideInRight">
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -132,7 +132,30 @@
             </div><!-- End Sales Card -->
           </div>
         </div>
-        <button type="button" onclick="showAddFeild()" class="btn btn-danger rounded-pill col-lg-7 mx-auto"
+
+        <!-- <div class="modal fade" id="showStopPoint" tabindex="-1" aria-labelledby="editUserModalLabel"
+        aria-hidden="true">
+        <div class="modal fade" id="addstopPoint" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addstopPoint">Show stop point</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="addUserForm">
+                  <input type="text" id="idBus" hidden>
+                  <div id="cardContainer"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+
+        <button type="button" onclick="showAddFeild()" class="btn btn-primary rounded-pill col-lg-7 mx-auto"
           style="margin: 10px;">Add Journey</button>
       </div>
       <div class="modal fade" id="addJourney" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
@@ -208,7 +231,9 @@
               <h5 class="modal-title" id="addstopPoint">Show stop point</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="cardContainer">
+            
+
                 
             </div>
           </div>

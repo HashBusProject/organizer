@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
     $.ajax({
-        url: "http://localhost:8080/Organizer/ViewAllPoint",
+        url: "https://global-memento-407716.uc.r.appspot.com/Organizer/ViewAllPoint",
         method: "GET",
         success: function(points) {
             document.getElementById("numberOfUser").innerHTML = points.length; 
@@ -39,7 +39,7 @@ function addPoint() {
         y: y,
     };
     $.ajax({
-        url: "http://localhost:8080/Organizer/AddStopPoint",
+        url: "https://global-memento-407716.uc.r.appspot.com/Organizer/AddStopPoint",
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -6,7 +6,7 @@ function login() {
         password : password 
     };
     $.ajax({
-        url: "http://localhost:8080/Organizer/Login",
+        url: "https://global-memento-407716.uc.r.appspot.com/Organizer/Login",
         method: "POST",
         headers: {
             "Content-Type": "application/json",
