@@ -1,31 +1,49 @@
-$(document).ready(function(){
+$(document).ready(function () {
+    var token = getCookie("token");
+
     var xhr = new XMLHttpRequest();
-    xhr.open("GET" , "https://global-memento-407716.uc.r.appspot.com/Organizer/GetNumberOfSchedules" , true);
+    xhr.open("GET", "https://global-memento-407716.uc.r.appspot.com/Organizer/GetNumberOfSchedules", true);
+
+    xhr.setRequestHeader("Authorization", "Bearer " + token);
+
     xhr.onreadystatechange = function () {
-        if(xhr.readyState == 4 && xhr.status == 200){
+        if (xhr.readyState == 4 && xhr.status == 200) {
             var data = xhr.responseText;
             document.getElementById("numberOfTrips").innerHTML = data;
         }
-    }
+    };
+
     xhr.send();
 });
+
 function getNameOfJourney(id, callback) {
+    var token = getCookie("token");
+
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://global-memento-407716.uc.r.appspot.com/Organizer/GetNameOfJourneyById?journeyId="+ id, true);
+    xhr.open("GET", "https://global-memento-407716.uc.r.appspot.com/Organizer/GetNameOfJourneyById?journeyId=" + id, true);
+    xhr.setRequestHeader("Authorization", "Bearer " + token);
+
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var name = xhr.responseText;
             callback(name);
         }
-    }
+    };
+
     xhr.send();
 }
 
+
 $(document).ready(function () {
+    var token = getCookie("token");
+
     $.ajax({
         url: "https://global-memento-407716.uc.r.appspot.com/Organizer/GetAllSchedule",
         method: "GET",
         contentType: 'application/json',
+        headers: {
+            "Authorization": "Bearer " + token
+        },
         success: function (trips) {
             var deferreds = $.map(trips, function (trip) {
                 var deferred = $.Deferred();
@@ -71,19 +89,24 @@ $(document).ready(function () {
             journeySelectEdit.innerHTML ='' ; 
         if(bus_id_edit.length > 0)
             bus_id_edit.innerHTML = ""; 
-        $.ajax({
-            url: "https://global-memento-407716.uc.r.appspot.com/Organizer/GetAllJourneys",
-            method: "GET",
-            contentType: 'application/json',
-            success: function (journeys) {
-                for (var i = 0; i < journeys.length; i++) {
-                    if(data.journey == journeys[i].id){
-                    var option = document.createElement("option");
-                    option.value = journeys[i].id;
-                    option.text = journeys[i].name;
-                    journeySelectEdit.appendChild(option);
-                }
-            }
+            var token = getCookie("token");
+
+            $.ajax({
+                url: "https://global-memento-407716.uc.r.appspot.com/Organizer/GetAllJourneys",
+                method: "GET",
+                contentType: 'application/json',
+                headers: {
+                    "Authorization": "Bearer " + token
+                },
+                success: function (journeys) {
+                    for (var i = 0; i < journeys.length; i++) {
+                        if (data.journey == journeys[i].id) {
+                            var option = document.createElement("option");
+                            option.value = journeys[i].id;
+                            option.text = journeys[i].name;
+                            journeySelectEdit.appendChild(option);
+                        }
+                    }
                 
 
                 for (var i = 0; i < journeys.length; i++) {
@@ -95,19 +118,22 @@ $(document).ready(function () {
                 }
             }
 
-                $.ajax({
-                    url: "https://global-memento-407716.uc.r.appspot.com/Organizer/GetIdOfBuses",
-                    method: "GET",
-                    contentType: 'application/json',
-                    success: function (busIds) {
-                        for (var i = 0; i < busIds.length; i++) {
-                            if(data.bus == busIds[i].id){
+            $.ajax({
+                url: "https://global-memento-407716.uc.r.appspot.com/Organizer/GetIdOfBuses",
+                method: "GET",
+                contentType: 'application/json',
+                headers: {
+                    "Authorization": "Bearer " + token
+                },
+                success: function (busIds) {
+                    for (var i = 0; i < busIds.length; i++) {
+                        if (data.bus == busIds[i].id) {
                             var option = document.createElement("option");
                             option.value = busIds[i];
                             option.text = busIds[i];
                             bus_id_edit.appendChild(option);
-                            
                         }
+                    
                         for (var i = 0; i < busIds.length; i++) {
                             if(data.bus != busIds[i].id){
                             var option = document.createElement("option");
@@ -131,15 +157,18 @@ $(document).ready(function () {
         var data = $("#example").DataTable().row($(this).parents('tr')).data();
         console.log(data) ;
         $.ajax({
-            url : "https://global-memento-407716.uc.r.appspot.com/Organizer/DeleteSchedule?scheduleId="+data.scheduleId, 
-            method : "DELETE" , 
+            url: "https://global-memento-407716.uc.r.appspot.com/Organizer/DeleteSchedule?scheduleId=" + data.scheduleId,
+            method: "DELETE",
             contentType: 'application/json',
-            success:function(data){
-                alert("Trip was deleted") ; 
-                window.location.reload() ; 
+            headers: {
+                "Authorization": "Bearer " + token
             },
-            error:function(data) {
-                alert("Error in delete trip") ; 
+            success: function (data) {
+                alert("Trip was deleted");
+                window.location.reload();
+            },
+            error: function (data) {
+                alert("Error in delete trip");
             }
         });
     });
@@ -155,10 +184,15 @@ function showAddFeild() {
         $('#addTrip').modal('show');
         return;
     }
+    var token = getCookie("token");
+
     $.ajax({
-        url : "https://global-memento-407716.uc.r.appspot.com/Organizer/GetAllJourneys" , 
-        method : "GET" , 
+        url: "https://global-memento-407716.uc.r.appspot.com/Organizer/GetAllJourneys",
+        method: "GET",
         contentType: 'application/json',
+        headers: {
+            "Authorization": "Bearer " + token
+        },
         success:function(journey) { 
             for(var i = 0; i < journey.length ; i++){
                 var option = document.createElement("option");
@@ -167,10 +201,13 @@ function showAddFeild() {
                 journeySelect.appendChild(option);
         }
 
-            $.ajax({
-                url : "https://global-memento-407716.uc.r.appspot.com/Organizer/GetIdOfBuses" ,
-                method : "GET" , 
-                contentType: 'application/json',
+        $.ajax({
+            url: "https://global-memento-407716.uc.r.appspot.com/Organizer/GetIdOfBuses",
+            method: "GET",
+            contentType: 'application/json',
+            headers: {
+                "Authorization": "Bearer " + token
+            },
                 success:function(busId){
                     for(var i = 0 ; i < busId.length ; i++){
                         var option = document.createElement("option") ; 
@@ -202,10 +239,13 @@ function addSchedule(){
     }
 
     $.ajax({
-        url : "https://global-memento-407716.uc.r.appspot.com/Organizer/AddSchedule" , 
-        method : "POST" , 
+        url: "https://global-memento-407716.uc.r.appspot.com/Organizer/AddSchedule",
+        method: "POST",
         contentType: 'application/json',
-        data : JSON.stringify(schedule) ,
+        data: JSON.stringify(schedule),
+        headers: {
+            "Authorization": "Bearer " + token
+        },
         success:function(data) {
             alert("Schedule added successfully!") ; 
             window.location.reload() ; 
@@ -233,10 +273,13 @@ function editTrip() {
         date : date 
     }
     $.ajax({
-        url :  "https://global-memento-407716.uc.r.appspot.com/Organizer/EditSchedule",
-        method : "PUT" , 
+        url: "https://global-memento-407716.uc.r.appspot.com/Organizer/EditSchedule",
+        method: "PUT",
         contentType: 'application/json',
-        data : JSON.stringify(schedule) ,
+        data: JSON.stringify(schedule),
+        headers: {
+            "Authorization": "Bearer " + token
+        },
         success:function(data) {
             alert("Trip updated successfully!") ; 
             window.location.reload() ; 
