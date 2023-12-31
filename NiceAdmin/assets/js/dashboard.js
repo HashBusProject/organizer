@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://localhost:8080/Organizer/GetSumOfPassengerNumber");
@@ -63,8 +64,9 @@ $(document).ready(function() {
     xhr.open("GET" , "http://localhost:8080/Organizer/GetTheTopJourney") ; 
     xhr.onloadend = function(){
         if(xhr.status === 200){
-            
+            document.getElementById("topJourney").innerHTML = JSON.parse(xhr.responseText).totalPassenger;
+            document.getElementById("nameJourney").innerHTML = JSON.parse(xhr.responseText).journeyName;
         }
     }
-
-})
+    xhr.send() ; 
+});

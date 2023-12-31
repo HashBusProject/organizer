@@ -66,8 +66,11 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
-        
-      </li><!-- End Components Nav -->
+        <a class="nav-link " href="dashboard.html">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#point-nav" data-bs-toggle="collapse" href="#">
@@ -101,27 +104,13 @@
             </a>
           </li>
         </ul>
-
-
-
-
       <li class="nav-heading">Pages</li>
-
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span>Logout</span>
-        </a>
-      </li>
+        <button class="nav-link" onclick="logout()">
+            <i class="bi bi-card-list"></i>
+            <span>Logout</span>
+        </button>
+    </li>
     </ul>
   </aside>
   <main id="main" class="main">
@@ -217,8 +206,10 @@
         <script src="assets/vendor/tinymce/tinymce.min.js"></script>
         <script src="assets/vendor/php-email-form/validate.js"></script>
         <script src="assets/js/route.js"></script>
+        <script src="assets/js/logout.js"></script>
 
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/route.js"></script>
         <script src="assets/js/point.js"></script>
 
 </body>

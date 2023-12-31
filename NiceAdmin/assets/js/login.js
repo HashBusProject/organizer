@@ -1,3 +1,9 @@
+$(document).ready(function () {
+    var isLoggedIn = localStorage.getItem('isLoggedIn') ; 
+    if(isLoggedIn){
+        window.location.href = "dashboard.html" ; 
+    }
+});
 function login() { 
     var username = document.getElementById("username").value; 
     var password = document.getElementById("password").value ; 
@@ -14,7 +20,8 @@ function login() {
         data: JSON.stringify(user),
         success: function (data) {
             alert("Login successful");
-            window.location.href = "schedule.html" ;
+            localStorage.setItem('isLoggedIn' , true) ; 
+            window.location.href = "dashboard.html" ;
         },
         error: function (xhr) {
             alert("Login failed: " + xhr.responseText);
