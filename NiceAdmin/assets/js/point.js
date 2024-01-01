@@ -5,7 +5,7 @@ $(document).ready(function() {
         url: "https://global-memento-407716.uc.r.appspot.com/Organizer/ViewAllPoint",
         method: "GET",
         success: function(points) {
-            document.getElementById("numberOfUser").innerHTML = points.length; 
+            document.getElementById("numberOfPoint").innerHTML = points.length; 
             $("#example").DataTable({
                 data: points,
                 columns: [

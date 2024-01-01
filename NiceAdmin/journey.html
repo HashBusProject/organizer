@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Bus</title>
+  <title>Journey</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -45,8 +45,12 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
+        <a class="nav-link " href="dashboard.html">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
 
-      </li><!-- End Components Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#point-nav" data-bs-toggle="collapse" href="#">
@@ -66,7 +70,7 @@
         <ul id="bus-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="journey.html">
-              <i class="bi bi-circle"></i><span>Add Journey</span>
+              <i class="bi bi-circle"></i><span>manage Journey</span>
             </a>
           </li>
           <li>
@@ -80,33 +84,18 @@
             </a>
           </li>
         </ul>
-
-
-
-
       <li class="nav-heading">Pages</li>
-
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span>Logout</span>
-        </a>
-      </li>
+        <button class="nav-link" onclick="logout()">
+            <i class="bi bi-card-list"></i>
+            <span>Logout</span>
+        </button>
+    </li>
     </ul>
   </aside>
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>Journey </h1>
-
     </div><!-- End Page Title -->
     <section class="section dashboard">
       <div class="row">
@@ -128,33 +117,9 @@
                   </div>
                 </div>
               </div>
-
-            </div><!-- End Sales Card -->
-          </div>
-        </div>
-
-        <!-- <div class="modal fade" id="showStopPoint" tabindex="-1" aria-labelledby="editUserModalLabel"
-        aria-hidden="true">
-        <div class="modal fade" id="addstopPoint" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="addstopPoint">Show stop point</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form id="addUserForm">
-                  <input type="text" id="idBus" hidden>
-                  <div id="cardContainer"></div>
-                </form>
-              </div>
             </div>
           </div>
         </div>
-      </div> -->
-
-
-
         <button type="button" onclick="showAddFeild()" class="btn btn-primary rounded-pill col-lg-7 mx-auto"
           style="margin: 10px;">Add Journey</button>
       </div>
@@ -342,6 +307,7 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/route.js"></script>
+  <script src="assets/js/logout.js"></script>
 
   <script src="assets/js/journey.js"></script>
 
