@@ -100,42 +100,63 @@ $(document).ready(function () {
     function editFunction(data) {
         var sourcePoint = document.getElementById("sourcePointEdit");
         var destinationPoint = document.getElementById("destinationPointEdit");
-        document.getElementById("price").value = data.price;
-        document.getElementById("journeyName").value = data.name;
-        document.getElementById("idJourney").value = data.id;
+        var priceInput = document.getElementById("price");
+        var journeyNameInput = document.getElementById("journeyName");
+        var idJourneyInput = document.getElementById("idJourney");
+    
+        priceInput.value = data.price;
+        journeyNameInput.value = data.name;
+        idJourneyInput.value = data.id;
+    
         $.ajax({
             url: "https://global-memento-407716.uc.r.appspot.com/Organizer/ViewAllPoint",
             method: "GET",
             success: function (points) {
+                if (!points || !Array.isArray(points) || points.length === 0) {
+                    alert("No points available");
+                    return;
+                }
+    
+                sourcePoint.innerHTML = "";
+                destinationPoint.innerHTML = "";
+    
                 for (var i = 0; i < points.length; i++) {
                     var option = document.createElement("option");
                     option.value = points[i].id;
                     option.text = points[i].pointName;
                     sourcePoint.appendChild(option);
                 }
+    
                 for (var i = 0; i < points.length; i++) {
                     var option = document.createElement("option");
                     option.value = points[i].id;
                     option.text = points[i].pointName;
                     destinationPoint.appendChild(option);
                 }
+    
                 $('#editJourneyModal').modal('show');
             },
             error: function (error) {
-                alert(error.responseText);
+                alert("Error fetching points: " + error.responseText);
             }
         });
-
     }
-
+    
 
     function deleteFunction(data) {
+        var isConfirmed = confirm("Are you sure you want to delete this journey?");
+    
+        if (!isConfirmed) {
+            return;
+        }
+    
         var id = {
             id: data.id
-        }
+        };
+    
         $.ajax({
             url: "https://global-memento-407716.uc.r.appspot.com/Organizer/DeleteJourney",
-            method: "Post",
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -145,10 +166,11 @@ $(document).ready(function () {
                 window.location.reload();
             },
             error: function (error) {
-                alert("You must delete the journeys from schadule");
+                alert("Error deleting journey: " + error.responseText);
             }
         });
     }
+    
 
     function showFunction(data) {
         fetchEndpointDataForJourney(data.id);
@@ -210,12 +232,24 @@ function addJourney() {
     var destinationPoint = document.getElementById("destinationPointAdd").value;
     var journeyname = document.getElementById("addPointName").value;
     var price = document.getElementById("addTicketJourney").value;
-    journey = {
+
+    if (!sourcePoint || !destinationPoint || !journeyname || !price) {
+        alert("Please fill in all fields");
+        return;
+    }
+
+    if (sourcePoint === destinationPoint) {
+        alert("Source point cannot be the same as destination point");
+        return;
+    }
+
+    var journey = {
         sourcePoint: sourcePoint,
         destinationPoint: destinationPoint,
         name: journeyname,
         price: price
-    }
+    };
+
     $.ajax({
         url: "https://global-memento-407716.uc.r.appspot.com/Organizer/AddJourney",
         method: "POST",
@@ -233,19 +267,33 @@ function addJourney() {
     });
 }
 
+
+
 function editJourney() {
     var sourcePoint = document.getElementById("sourcePointEdit").value;
     var destinationPoint = document.getElementById("destinationPointEdit").value;
     var journeyName = document.getElementById("journeyName").value;
     var ticketPrice = document.getElementById("price").value;
     var id = document.getElementById("idJourney").value;
+
+    if (!sourcePoint || !destinationPoint || !journeyName || !ticketPrice || !id) {
+        alert("Please fill in all fields");
+        return;
+    }
+
+    if (sourcePoint === destinationPoint) {
+        alert("Source point cannot be the same as destination point");
+        return;
+    }
+
     var data = {
         id: id,
         sourcePoint: sourcePoint,
         destinationPoint: destinationPoint,
         price: ticketPrice,
         name: journeyName
-    }
+    };
+
     $.ajax({
         url: "https://global-memento-407716.uc.r.appspot.com/Organizer/EditJourney",
         method: "POST",
@@ -258,10 +306,11 @@ function editJourney() {
             window.location.reload();
         },
         error: function (error) {
-            alert("Error in delete Journey");
+            alert("Error in updating Journey");
         }
     });
 }
+
 
 function addStopPoint() {
     var stopPointId = document.getElementById("stopPoint").value;

@@ -126,24 +126,28 @@ $(document).ready(function () {
         });
     });
 
-
     $('#example').on('click', '.delete-button', function () {
         var data = $("#example").DataTable().row($(this).parents('tr')).data();
-        console.log(data) ;
+    
+        var isConfirmed = confirm("Are you sure you want to delete this trip?");
+    
+        if (!isConfirmed) {
+            return;
+        }
+    
         $.ajax({
-            url : "https://global-memento-407716.uc.r.appspot.com/Organizer/DeleteSchedule?scheduleId="+data.scheduleId, 
-            method : "DELETE" , 
+            url: "https://global-memento-407716.uc.r.appspot.com/Organizer/DeleteSchedule?scheduleId=" + data.scheduleId,
+            method: "DELETE",
             contentType: 'application/json',
-            success:function(data){
-                alert("Trip was deleted") ; 
-                window.location.reload() ; 
+            success: function (data) {
+                alert("Trip was deleted");
+                window.location.reload();
             },
-            error:function(data) {
-                alert("Error in delete trip") ; 
+            error: function (data) {
+                alert("Error in deleting trip");
             }
         });
     });
-    
 });
 
 
@@ -187,62 +191,76 @@ function showAddFeild() {
     });
 }
 
-function addSchedule(){
-    var journey = document.getElementById("journeyName").value ; 
-    var bus = document.getElementById("busID").value ; 
-    var time = document.getElementById("timeInput").value ; 
-    var date = document.getElementById("datepicker").value ; 
+function addSchedule() {
+    var journey = document.getElementById("journeyName").value;
+    var bus = document.getElementById("busID").value;
+    var time = document.getElementById("timeInput").value;
+    var date = document.getElementById("datepicker").value;
 
-    time += ":00" ; 
-    schedule = { 
-        journey : journey , 
-        bus : bus , 
-        time : time  , 
-        date : date
+    if (!journey || !bus || !time || !date) {
+        alert("Please fill in all required fields");
+        return;
     }
 
+    time += ":00";
+
+    var schedule = {
+        journey: journey,
+        bus: bus,
+        time: time,
+        date: date
+    };
+
     $.ajax({
-        url : "https://global-memento-407716.uc.r.appspot.com/Organizer/AddSchedule" , 
-        method : "POST" , 
+        url: "https://global-memento-407716.uc.r.appspot.com/Organizer/AddSchedule",
+        method: "POST",
         contentType: 'application/json',
-        data : JSON.stringify(schedule) ,
-        success:function(data) {
-            alert("Schedule added successfully!") ; 
-            window.location.reload() ; 
-        } , 
-        error:function(error) {
-            alert("Error in add schedule") ; 
+        data: JSON.stringify(schedule),
+        success: function (data) {
+            alert("Schedule added successfully!");
+            window.location.reload();
+        },
+        error: function (error) {
+            alert("Error in adding schedule");
         }
     });
-
 }
 
 
+
 function editTrip() {
-    var schedule_id = document.getElementById("idTripEdit").value ; 
-    var bus = document.getElementById("busIdEdit").value ; 
-    var journey = document.getElementById("journeyNameEdit").value; 
+    var schedule_id = document.getElementById("idTripEdit").value;
+    var bus = document.getElementById("busIdEdit").value;
+    var journey = document.getElementById("journeyNameEdit").value;
     var time = document.getElementById("timeInputEdit").value;
-    var date = document.getElementById("datepicker").value ; 
-    time += ":00" ;
-    var schedule = {
-        scheduleId : schedule_id , 
-        bus : bus , 
-        journey : journey  , 
-        time : time , 
-        date : date 
+    var date = document.getElementById("datepicker").value;
+
+    if (!schedule_id || !bus || !journey || !time || !date) {
+        alert("Please fill in all required fields");
+        return;
     }
+
+    time += ":00";
+
+    var schedule = {
+        scheduleId: schedule_id,
+        bus: bus,
+        journey: journey,
+        time: time,
+        date: date
+    };
+
     $.ajax({
-        url :  "https://global-memento-407716.uc.r.appspot.com/Organizer/EditSchedule",
-        method : "PUT" , 
+        url: "https://global-memento-407716.uc.r.appspot.com/Organizer/EditSchedule",
+        method: "PUT",
         contentType: 'application/json',
-        data : JSON.stringify(schedule) ,
-        success:function(data) {
-            alert("Trip updated successfully!") ; 
-            window.location.reload() ; 
-        } , 
-        error:function(data) {
-            alert("Error in update trip") ; 
+        data: JSON.stringify(schedule),
+        success: function (data) {
+            alert("Trip updated successfully!");
+            window.location.reload();
+        },
+        error: function (data) {
+            alert("Error in updating trip");
         }
     });
 };
