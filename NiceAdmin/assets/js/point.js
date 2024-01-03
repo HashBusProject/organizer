@@ -17,8 +17,7 @@ $(document).ready(function() {
             'Authorization': 'Bearer ' + token
         },
         success: function(points) {
-            document.getElementById("numberOfUser").innerHTML = points.length; 
-            
+            document.getElementById("numberOfPoint").innerHTML = points.length; 
             $("#example").DataTable({
                 data: points,
                 columns: [

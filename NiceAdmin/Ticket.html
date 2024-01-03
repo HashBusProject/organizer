@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Bus</title>
+  <title>Ticket</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -46,8 +46,12 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
-        
-      </li><!-- End Components Nav -->
+        <a class="nav-link " href="dashboard.html">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#point-nav" data-bs-toggle="collapse" href="#">
@@ -81,40 +85,22 @@
             </a>
           </li>
         </ul>
-
-
-
-
       <li class="nav-heading">Pages</li>
-
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span>Logout</span>
-        </a>
-      </li>
+        <button class="nav-link" onclick="logout()">
+            <i class="bi bi-card-list"></i>
+            <span>Logout</span>
+        </button>
+    </li>
     </ul>
   </aside>
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>Ticket </h1>
-    
-    </div><!-- End Page Title -->
-    <section class="section dashboard">
+        <section class="section dashboard">
       <div class="row">
-        <!-- Left side columns -->
         <div class="col-lg-8">
           <div class="row">
-            <!-- Sales Card -->
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
                 <div class="card-body">
@@ -122,7 +108,6 @@
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="fas fa-ticket-alt"></i>
-
                     </div>
                     <div class="ps-3">
                       <h6 id="numberOfTickets"></h6>
@@ -130,8 +115,7 @@
                   </div>
                 </div>
               </div>
-
-            </div><!-- End Sales Card -->
+            </div>
           </div>
         </div>
         <button type="button" onclick="" class=" btn btn-primary rounded-pill col-lg-7 mx-auto" style="margin: 10px;">Delete All Tickets</button>
@@ -219,21 +203,14 @@
       </div>
       <table id="example" class="table table-striped" style="width:100%">
         <thead>
-            <th>Ticket Id</th>
+          <th>Ticket Id</th>
           <th>Journey Name </th>
           <th>user name </th>
-          
-          
-
-
         </thead>
         <tfoot>
           <th>Ticket Id</th>
           <th>Journey Name </th>
           <th>user name </th>
-          
-          
-
         </tfoot>
       </table>
     </section>
@@ -272,6 +249,7 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>  
   <script src="assets/js/route.js"></script>
+  <script src="assets/js/logout.js"></script>
 
   <script src="assets/js/ticket.js"></script>
 

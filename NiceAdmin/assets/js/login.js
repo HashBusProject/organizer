@@ -1,6 +1,12 @@
-function login() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
+$(document).ready(function () {
+    var isLoggedIn = localStorage.getItem('isLoggedIn') ; 
+    if(isLoggedIn){
+        window.location.href = "dashboard.html" ; 
+    }
+});
+function login() { 
+    var username = document.getElementById("username").value; 
+    var password = document.getElementById("password").value ; 
     var user = {
         username: username,
         password: password
@@ -21,7 +27,8 @@ function login() {
             document.cookie = "token=" + token + "; expires=" + expirationDate.toUTCString() + "; path=/";
 
             alert("Login successful");
-            window.location.href = "schedule.html";
+            localStorage.setItem('isLoggedIn' , true) ; 
+            window.location.href = "dashboard.html" ;
         },
         error: function (xhr) {
             alert("Login failed: " + xhr.responseText);
