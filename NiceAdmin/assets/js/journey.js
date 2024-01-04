@@ -166,7 +166,7 @@ $(document).ready(function () {
                 window.location.reload();
             },
             error: function (error) {
-                alert("Error deleting journey: " + error.responseText);
+                alert("Error deleting journey: " + "you must delete this journey from the schedule");
             }
         });
     }
