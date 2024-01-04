@@ -44,7 +44,7 @@ $(document).ready(function() {
     xhrGetAllTickets.send();
 });
 
-function deleteTicket(ticketId) {
+function deleteTicket() {
     var isConfirmed = confirm("Are you sure you want to delete this ticket?");
 
     if (!isConfirmed) {
@@ -52,12 +52,10 @@ function deleteTicket(ticketId) {
     }
 
     var xhrDeleteTicket = new XMLHttpRequest();
-    xhrDeleteTicket.open("POST", "https://global-memento-407716.uc.r.appspot.com/Organizer/DeleteTicket", true);
-    xhrDeleteTicket.setRequestHeader("Content-Type", "application/json");
-
-    var data = { id: ticketId };
+    xhrDeleteTicket.open("DELETE", "https://global-memento-407716.uc.r.appspot.com/Organizer/DeleteAllTickets", true);
 
     xhrDeleteTicket.onreadystatechange = function() {
+        console.log(xhrDeleteTicket.status);
         if (xhrDeleteTicket.readyState == 4) {
             if (xhrDeleteTicket.status == 200) {
                 handleDeleteSuccess();
@@ -67,7 +65,7 @@ function deleteTicket(ticketId) {
         }
     };
 
-    xhrDeleteTicket.send(JSON.stringify(data));
+    xhrDeleteTicket.send();
 
     function handleDeleteSuccess() {
         alert("Ticket deleted successfully!");
